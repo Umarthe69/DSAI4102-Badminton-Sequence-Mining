@@ -12,16 +12,16 @@ Single-shot frequency counts fail to capture the turn-by-turn tactical exchanges
 Key components of the pipeline:
 - **Role-Normalized Rally Reconstruction:** Reconstructs **4,840 complete rallies** (52,356 strokes across 58 matches) and maps hitters to consistent within-rally roles (`Server` `S` vs. `Receiver` `R`).
 - **Order-Sensitive vs. Unordered Baseline Comparison:** Evaluates contiguous sequence mining against an unordered co-occurrence baseline across minimum support thresholds ($\tau \in \{0.01, 0.02, 0.05\}$), reducing candidate rules tenfold at $\tau = 0.02$ (336 vs. 3,312 rules).
-- **Multi-Stage Validity Filtering:** Validates candidate rules using match-disjoint splits (40 train / 8 validation / 10 test matches), 200-trial outcome-label permutation testing, and final-shot exclusion ($T_{\text{no\_final}}$).
+- **Multi-Stage Validity Filtering:** Validates candidate rules using match-disjoint splits (40 train / 8 validation / 10 test matches), 200-trial outcome-label permutation testing, and final-shot exclusion (`T_no_final`).
 
 ---
 
 ## Key Empirical Findings
 - **Top Statistically Validated Tactical Pattern:** `R:Net_Shot -> S:Lift -> R:Transition_Drop` (`Server_Win`)
-  - **Training Split:** $\text{Lift} = 1.3825$, $\text{Confidence} = 70.24\%$ ($84$ occurrences across $28$ matches), family-wise permutation $p = 0.0348 < 0.05$.
-  - **Held-Out Test Split (10 Unseen Matches):** $\text{Lift} = 1.4034$, $\text{Confidence} = 72.73\%$.
-  - **Final-Shot Exclusion ($T_{\text{no\_final}}$):** Remains the #1 ranked sequence ($\text{Lift} = 1.3374$, $\text{Confidence} = 67.95\%$), confirming mid-rally positional leverage rather than a terminal finishing stroke.
-- **Terminal-Shot Artifact Identified:** `R:Net_Block -> S:Net_Kill` exhibits high training lift ($1.5254$, $p = 0.0050$) but drops to $1.1133$ on unseen test matches and disappears when the rally-ending shot is removed.
+  - **Training Split:** Lift = `1.3825`, Confidence = `70.24%` (84 occurrences across 28 matches), family-wise permutation $p = 0.0348 < 0.05$.
+  - **Held-Out Test Split (10 Unseen Matches):** Lift = `1.4034`, Confidence = `72.73%`.
+  - **Final-Shot Exclusion (`T_no_final`):** Remains the #1 ranked sequence (Lift = `1.3374`, Confidence = `67.95%`), confirming mid-rally positional leverage rather than a terminal finishing stroke.
+- **Terminal-Shot Artifact Identified:** `R:Net_Block -> S:Net_Kill` exhibits high training lift (`1.5254`, $p = 0.0050$) but drops to `1.1133` on unseen test matches and disappears when the rally-ending shot is removed.
 
 ---
 
