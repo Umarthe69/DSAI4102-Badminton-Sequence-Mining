@@ -1,0 +1,7 @@
+min_support,mode,total_candidate_rules,rules_lift_ge_1_25,max_lift
+0.01,ordered,544,20,1.7611
+0.01,unordered,5698,224,1.6871
+0.02,ordered,336,6,1.5254
+0.02,unordered,3312,63,1.5925
+0.05,ordered,174,2,1.2771
+0.05,unordered,1392,0,1.2401
